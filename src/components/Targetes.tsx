@@ -1,17 +1,20 @@
-export default function Targetes(props) {
-    console.log(props)
+import React from "react";
+import {Targeta} from "../data-targetes"; //interficie
+
+const Targetes: React.FC<Targeta> = ({ id, service, description, price }) => { //preguntar a chat q es millor
+  // console.log({ id, service, description, price });
     return (
         <section>
         <div className="targeta-container">
           <div className="targeta">
             <div className="targeta-info">
-              <h5>{props.service}</h5>
-              <p>{props.description}</p>
+              <h5>{service}</h5>
+              <p>{description}</p>
             </div>
             <div className="targeta-preu">
-              <h4>{props.price} €</h4>
+              <h4>{price} €</h4>
               <div className="form-check">
-                <input className="form-check-input" type="checkbox" id="seo" />
+                <input className="form-check-input" type="checkbox" id={`${id}`} />
                 <label className="form-check-label" htmlFor="seo">
                   Afegeix
                 </label>
@@ -22,3 +25,5 @@ export default function Targetes(props) {
       </section>
     );
   }
+
+  export default Targetes;
