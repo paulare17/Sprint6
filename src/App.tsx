@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useState, useEffect} from "react"; //aprendre bé que es cada cosa
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Portada from "./components/Portada";
 import Targetes from "./components/Targetes";
-import dataTargeta, { Targeta } from "./data-targetes"; //array i interficie
+import Preu from "./components/Preu";
+import dataTargeta, { Targeta, SelectedService } from "./data-targetes"; //array i interficie
+// import { SelectedService } from "./hooks/SelectedService";
 
 // const [count, setCount] = useState(0)
 
@@ -17,8 +19,10 @@ const App: React.FC = () => {
       <Navbar />
       <Portada />
       {printTargetes}
+      {/* <Preu/> */}
     </>
   );
 };
 
 export default App;
+
