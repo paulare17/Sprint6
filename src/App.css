@@ -1,152 +1,149 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 nav {
-    padding: 20px 30px;
-    color: #333;
-    background-color: white;
-    display: flex;
-    align-items: center;
-
+  padding: 20px 30px;
+  color: #333;
+  background-color: white;
+  display: flex;
+  align-items: center;
 }
 
-
 .logo {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .navbar {
-    justify-content: space-between;
-    padding: 10px 20px;
-    font-weight: bold;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-weight: bold;
 }
 
 .portada {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 20vh;
-    width: 85%;
-    border-radius: 40px;
-    background-image: url(src/assets/portada.png);
-    background-repeat: no-repeat; 
-    background-size: cover;
-    background-position: center;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  width: 85%;
+  border-radius: 40px;
+  background-image: url(src/assets/portada.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .portada h1 {
-    font-size: 50px;
-    font-weight: bold;
-    color: black;
-    text-align: center;
-    margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  margin-bottom: 20px;
 }
-
 
 /* Targeta */
 
 .targeta-container {
-    display: flex;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 0 1rem;
-    justify-content: center;
-  }
-  
-  .targeta {
-    background: white;
-    border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 70%;
-    height: 150px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .targeta-info h5 {
-    margin-bottom: 0.25rem;
-    font-weight: bold;
-  }
-  
-  .targeta-info p {
-    margin: 0;
-    color: #000000;
-    font-size: 0.9rem;
-  }
-  
-  .targeta-preu {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .targeta-preu h4 {
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .form-check {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .form-check-input {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .form-check-label {
-    font-size: 0.95rem;
-  }
-  
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  justify-content: center;
+}
+.targeta {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 70%;
+  min-height: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center!important;
+}
+.targeta-info h5 {
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+.targeta-info p {
+  margin: 0;
+  color: #000000;
+  font-size: 0.9rem;
+}
+.targeta-preu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 
 
-  /* Desplegable  */
+}
+.targeta-preu h4 {
+  font-weight: bold;
+  margin: 0;
+}
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.form-check-input {
+  width: 18px;
+  height: 18px;
+}
+.form-check-label {
+  font-size: 0.95rem;
+} 
 
 
-  .additional-options {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-  }
-  
-  .option {
-    margin-bottom: 10px;
-  }
-  
-  .option label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 5px;
-    display: block;
-  }
-  
-  .option-buttons {
-    display: flex;
-    gap: 5px;
-  }
-  
-  .option-buttons button {
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 0.9rem;
-  }
-  
-  .option-buttons button:hover {
-    background-color: #e9ecef;
-  }
+/* Desplegable  */
+
+.additional-options {
+  /* margin-top: 10px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #ddd; */
+
+  /* position: absolute; */
+  top: 100%; /* Place it just below the parent (.targeta-preu) */
+  left: 0; /* Align it to the left edge of the parent */
+  margin-top: 5px; /* Small gap between the checkbox and dropdown */
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  /* width: 100%;  */
+  box-sizing: border-box;
+
+
+
+}
+.option {
+  margin-bottom: 10px;
+}
+.option label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+}
+.option-buttons {
+  display: flex;
+  gap: 5px;
+}
+.option-buttons button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.option-buttons button:hover {
+  background-color: #e9ecef;
+}

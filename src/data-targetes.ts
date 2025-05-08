@@ -5,13 +5,6 @@ export interface Targeta {
     price: number;
 }
 
-export interface SelectedService {
-    id: number;
-    pages: number;
-    languages: number;
-    price: number
-  }
-
 const dataTargeta: Targeta[] = [
     {
         id: 1,

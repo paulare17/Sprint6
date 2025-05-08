@@ -1,10 +1,10 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
-export interface SelectedService {
-  id: number;
-  pages: number
-  languages: number
-}
+// export interface SelectedService {
+//   id: number;
+//   pages: number
+//   languages: number
+// }
 
-const [selectedServices, setSelectedServices] = useState<SelectedService[]>([]);
+// const [selectedServices, setSelectedServices] = useState<SelectedService[]>([]);
 

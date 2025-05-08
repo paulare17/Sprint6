@@ -1,27 +1,14 @@
-import { Targeta } from "../data-targetes";
-import Targetes from "./Targetes";
-import { SelectedService } from "../data-targetes";
+import React from "react";
 
-// export interface SelectedService {
-//     id: number;
-//     pages: number;
-//     languages: number;
-//     price: number;
-//   }
+interface Props {
+  countPags: number;
+  countLanguages: number;
+  price: number;
+}
+const Preu: React.FC<Props> = ({ countPags, countLanguages, price }) => {
+  const preuFinal = (countPags + countLanguages) * 30 + price;
 
-// type PreuProps = {
-//     selectedServices: SelectedService[];
-//   };
+  return <h2>Preu total:{preuFinal} €</h2>;
+};
 
-
-//   const Preu: React.FC<PreuProps> = ({ selectedService }) => {
-//     const total = selectedService.price + (selectedService.pages + selectedService.languages) * 30; // Exemple de càlcul
-  
-//     return (
-//       <div>
-//         <h3>Preu total: {total} €</h3>
-//       </div>
-//     );
-//   };
-  
-//   export default Preu
+export default Preu;

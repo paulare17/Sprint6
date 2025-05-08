@@ -1,35 +1,40 @@
-import React, {useState} from "react";
+import React from "react";
 import { Targeta } from "../data-targetes"; //interficie
 
-const Targetes: React.FC<Targeta> = ({ id, service, description, price }) => {
+//extensió de la interfície de targeta
+interface Props extends Targeta {
+  countPags: number;
+  setCountPags: (num: number) => void;
+  countLanguages: number;
+  setCountLanguages: (num: number) => void;
+  isChecked: boolean;
+  onSelectTargeta: (id: number, isSelected: boolean) => void;
+}
 
-    const [isChecked, setIsChecked] = useState<boolean>(false);
+const Targetes: React.FC<Props> = ({
+  id,
+  service,
+  description,
+  price,
+  countPags,
+  countLanguages,
+  setCountLanguages,
+  setCountPags,
+  isChecked,
+  onSelectTargeta,
+}) => {
+ 
+  const selectedCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onSelectTargeta(id, e.target.checked);
+  };
 
-    const selectedCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setIsChecked(e.target.checked);
-    }
+  const addPags = () => countPags >= 0 && setCountPags(countPags + 1);
 
-    const [countPags, setCountPags] = useState<number>(0)
+  const subtractPags = () => countPags >= 0 && setCountPags(countPags - 1);
 
-    const [countLanguages, setCountLanguages] = useState<number>(0)
+  const addLanguages = () => countLanguages >= 0 && setCountLanguages(countLanguages + 1);
 
-    function addPags() {
-      setCountPags(prevCount => prevCount + 1)
-    }
-
-    function subtractPags() {
-      setCountPags(prevCount => prevCount - 1)
-    }
-    
-    function addLanguages() {
-      setCountLanguages(prevCount => prevCount + 1)
-    }
-
-    function subtractLanguages() {
-      setCountLanguages(prevCount => prevCount - 1)
-    }
-
-
+  const subtractLanguages = () => countLanguages >= 0 && setCountLanguages(countLanguages - 1);
 
   return (
     <section>
@@ -45,36 +50,34 @@ const Targetes: React.FC<Targeta> = ({ id, service, description, price }) => {
               <input
                 className="form-check-input"
                 type="checkbox"
-                id={id}
                 checked={isChecked}
-                onChange = {selectedCheckBox}
+                onChange={selectedCheckBox}
               />
-              <label className="form-check-label">Afegeix</label>
-        {/* desplegable al seleccionar: */}
-        {isChecked && (
-          <div className="additional-options">
-            <div className="option">
-              <label>Nombre de pàgines</label>
-              <div className="counter">
-              <button onClick={subtractPags}>-</button>
-                <input placeholder="0" value={countPags}/>
-                <button onClick={addPags}>+</button>
-              </div>
-            </div>
-            <div className="option">
-              <label>Nombre d'idiomes</label>
-              <div className="counter">
-              <button onClick={subtractLanguages}>-</button>
-                <input placeholder="0" value={countLanguages}/>
-                <button onClick={addLanguages}>+</button>
-              </div>
-            </div>
-          </div>
-        )}
+              <label className="form-check-label" >Afegeix</label>
+              {/* desplegable al seleccionar: */}
+              {isChecked && (
+                <div className="additional-options">
+                  <div className="option">
+                    <label>Nombre de pàgines</label>
+                    <div className="counter">
+                      <button onClick={subtractPags}>-</button>
+                      <input value={countPags} />
+                      <button onClick={addPags}>+</button>
+                    </div>
+                  </div>
+                  <div className="option">
+                    <label>Nombre d'idiomes</label>
+                    <div className="counter">
+                      <button onClick={subtractLanguages}>-</button>
+                      <input value={countLanguages} />
+                      <button onClick={addLanguages}>+</button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );
