@@ -18,10 +18,13 @@ nav {
   height: 30px;
 }
 
-.navbar {
-  justify-content: space-between;
+.text-logo {
   padding: 10px 20px;
   font-weight: bold;
+}
+
+.welcome-return {
+  margin-left: auto;
 }
 
 .portada {
@@ -146,4 +149,26 @@ nav {
 }
 .option-buttons button:hover {
   background-color: #e9ecef;
+}
+
+.totalPrice {
+  display: flex;
+  font-weight: bold;
+  justify-content: end;
+  max-width: 1000px;
+  margin: auto;
+  padding: 3rem 1rem;
+}
+
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.welcome-logo {
+  max-width: 220px;
+  padding: 2rem;
 }
