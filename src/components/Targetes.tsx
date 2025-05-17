@@ -42,7 +42,7 @@ const Targetes: React.FC<Props> = ({
         <div className="targeta">
           <div className="targeta-info">
             <h5>{service}</h5>
-            <p>{description}</p>
+            <div className="description">{description}</div>
           </div>
           <div className="targeta-preu">
             <h4>{price} €</h4>
@@ -53,7 +53,7 @@ const Targetes: React.FC<Props> = ({
                 checked={isChecked}
                 onChange={selectedCheckBox}
               />
-              <label className="form-check-label" >Afegeix</label>
+              <label className="form-check-label">Afegeix</label>
               {/* desplegable al seleccionar: */}
               {isChecked && (
                 <div className="additional-options">

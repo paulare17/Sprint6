@@ -67,7 +67,7 @@ const TargetaPressupost: React.FC<Props> = ({ preuFinal, services, addPressupost
                 required
                 placeholder="Escrigui el seu mail"
               />
-              <button type="submit">Sol·licitar pressupost</button>
+              <button type="submit" className="budget">Sol·licitar pressupost</button>
             </form>
           </div>
         </div>

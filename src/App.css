@@ -54,112 +54,159 @@ nav {
   display: flex;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  padding: 0 1rem;
+  padding: 0;
   justify-content: center;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .targeta {
   background: white;
-  border-radius: 10px;
-  padding: 1rem;
+  border-radius: 40px;
+  padding: 2rem;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 70%;
-  min-height: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  min-height: 100px;
   display: flex;
   justify-content: space-between;
-  align-items: center!important;
-}
-.targeta-info h5 {
-  margin-bottom: 0.25rem;
-  font-weight: bold;
-}
-.targeta-info p {
-  margin: 0;
-  color: #000000;
-  font-size: 0.9rem;
-}
-.targeta-preu {
-  display: flex;
   align-items: center;
-  gap: 1rem;
-
-
+  gap: 2rem;
 }
-.targeta-preu h4 {
-  font-weight: bold;
-  margin: 0;
-}
-.form-check {
+
+.targeta-info {
+  flex: 2;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 0.5rem;
 }
-.form-check-input {
-  width: 18px;
-  height: 18px;
+
+.targeta-info h5 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
 }
+
+.description {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.targeta-preu {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.targeta-preu h4 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.form-check {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.form-check-input {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .form-check-label {
   font-size: 0.95rem;
-} 
-
+  color: #666;
+}
 
 /* Desplegable  */
 
 .additional-options {
-  /* margin-top: 10px;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  border: 1px solid #ddd; */
-
-  /* position: absolute; */
-  top: 100%; /* Place it just below the parent (.targeta-preu) */
-  left: 0; /* Align it to the left edge of the parent */
-  margin-top: 5px; /* Small gap between the checkbox and dropdown */
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  /* width: 100%;  */
-  box-sizing: border-box;
-
-
-
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  padding: 1.5rem;
+  width: 280px;
+  margin-top: 1rem;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 .option {
-  margin-bottom: 10px;
+  margin-bottom: 1.5rem;
 }
+
+.option:last-child {
+  margin-bottom: 0;
+}
+
 .option label {
   font-size: 0.9rem;
   font-weight: 500;
-  margin-bottom: 5px;
+  color: #333;
+  margin-bottom: 0.75rem;
   display: block;
 }
-.option-buttons {
+
+.counter {
   display: flex;
-  gap: 5px;
+  gap: 0.75rem;
+  align-items: center;
 }
-.option-buttons button {
-  padding: 5px 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #fff;
+
+.counter button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: white;
   cursor: pointer;
-  font-size: 0.9rem;
+  color: #333;
+  font-size: 1rem;
+  transition: all 0.2s ease;
 }
-.option-buttons button:hover {
-  background-color: #e9ecef;
+
+.counter button:hover {
+  background-color: #f8f9fa;
+  border-color: #ddd;
+}
+
+.counter input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
 }
 
 .totalPrice {
   display: flex;
-  font-weight: bold;
-  justify-content: end;
-  max-width: 1000px;
-  margin: auto;
-  padding: 3rem 1rem;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 85%;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-size: 1.25rem;
+  color: #333;
 }
-
 
 /* pagina benvinguda */
 .welcome-page {
@@ -175,7 +222,7 @@ nav {
   padding: 2rem;
 }
 
-.welcome-button {
+.welcome-button, .welcome-return, .budget {
   padding: 1rem;
   background-color: #5fa3da;
   color: white;
@@ -183,6 +230,162 @@ nav {
   border: 0px;
 }
 
-.welcome-button:hover {
+.welcome-button:hover, .welcome-return:hover, .budget:hover {
   background-color: #2f538e
 }
+
+/* pressupost */
+
+/* Formulario de presupuesto */
+.targeta form {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.targeta form input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  background-color: white;
+  min-width: 200px;
+  flex: 1;
+}
+
+.targeta form input::placeholder {
+  color: #999;
+}
+
+.targeta form input:focus {
+  outline: none;
+  border-color: #5fa3da;
+}
+
+.budget {
+  padding: 0.75rem 1.5rem !important;
+  background-color: #5fa3da !important;
+  color: white !important;
+  border-radius: 8px !important;
+  border: none !important;
+  font-size: 0.9rem !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  white-space: nowrap !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.budget:hover {
+  background-color: #2f538e !important;
+}
+
+.budget::after {
+  content: "→";
+  font-size: 1.1rem;
+}
+
+/* Ajuste del contenedor para el formulario */
+.targeta-info {
+  width: 100%;
+}
+
+.targeta-info h5 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.targeta-info p {
+  display: none; /* Ocultamos el precio total ya que no aparece en el diseño de referencia */
+}
+
+/* Tarjetas de presupuestos */
+.pressupost-card {
+  background: white;
+  border-radius: 40px;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Contenedor de presupuestos */
+.pressupostos-container {
+  width: 85%;
+  margin: 2rem auto;
+}
+
+.pressupostos-container > h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos para las secciones de presupuesto */
+.pressupost-section {
+  flex: 1;
+}
+
+.pressupost-section:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pressupost-section h2 {
+  font-size: 1rem;
+  color: #666;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+
+.pressupost-section p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.pressupost-section:first-child p:first-of-type {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.pressupost-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pressupost-section ul li {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.pressupost-section ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #5fa3da;
+}
+
+.total-price {
+  font-weight: bolder;
+}
+

@@ -9,7 +9,6 @@ const ShowPressupost: React.FC<Props> = ({ pressupost }) => {
   return (
     <section className="pressupost-card">
       <div className="pressupost-section">
-        <h1>Dades del client</h1>
         <p><strong>Nom:</strong> {pressupost.name}</p>
         <p><strong>Email:</strong> {pressupost.email}</p>
         <p><strong>Telèfon:</strong> {pressupost.numPhone}</p>
