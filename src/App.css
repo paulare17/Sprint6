@@ -160,6 +160,8 @@ nav {
   padding: 3rem 1rem;
 }
 
+
+/* pagina benvinguda */
 .welcome-page {
   display: flex;
   flex-direction: column;
@@ -171,4 +173,16 @@ nav {
 .welcome-logo {
   max-width: 220px;
   padding: 2rem;
+}
+
+.welcome-button {
+  padding: 1rem;
+  background-color: #5fa3da;
+  color: white;
+  border-radius: 9px; 
+  border: 0px;
+}
+
+.welcome-button:hover {
+  background-color: #2f538e
 }

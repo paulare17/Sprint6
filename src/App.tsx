@@ -6,9 +6,12 @@ import Portada from "./components/Portada";
 import Targetes from "./components/Targetes";
 import Preu from "./components/Preu";
 import dataTargeta, { Targeta } from "./data-targetes";
-import logo from "./assets/logo.webp"; // Importem el logo aquí
+import logo from "./assets/logo.webp";
+import TargetaPressupost from "./components/TargetaPressupost";
+import dataPressupost, { Pressupost } from "./data-pressupost";
+import ShowPressupost from "./components/ShowPressupost";
 
-// Component per a la pàgina de benvinguda
+// pàgina de benvinguda
 const SplashMessage: React.FC<{ onClick: () => void }> = ({ onClick }) => {
   return (
     <div className="welcome-page">
@@ -16,21 +19,25 @@ const SplashMessage: React.FC<{ onClick: () => void }> = ({ onClick }) => {
       <h1>Benvingut/da!</h1>
       <h3>Està a punt d'accedir als serveis oferits per Frontender.itacademy</h3>
       <h2>Faci click aquí per veure els nostres serveis:</h2>
-      <button onClick={onClick}>Veure serveis</button>
+      <button onClick={onClick} className="welcome-button">Veure serveis</button>
     </div>
   );
 };
 
 const App: React.FC = () => {
-  // Estat per controlar si es mostra la pàgina de benvinguda
+  // state per controlar si es mostra la pàgina de benvinguda
   const [showSplash, setShowSplash] = useState(true);
 
-  // Estats per a les targetes i el preu
+  // pagines
   const [countPags, setCountPags] = useState(0);
-  const [countLanguages, setCountLanguages] = useState(0);
-  const [selectedTargetaId, setSelectedTargetaId] = useState<number | null>(null);
 
-  // Funció per seleccionar/desseleccionar targetes
+  //llenguatges
+  const [countLanguages, setCountLanguages] = useState(0);
+
+  const [dataPressupost, setDataPressupost] = useState<Pressupost[]>([])
+
+  //quina targeta està seleccionada
+  const [selectedTargetaId, setSelectedTargetaId] = useState<number | null>(null);
   const handleSelectTargeta = (id: number, isSelected: boolean) => {
     if (isSelected) {
       setSelectedTargetaId(id);
@@ -43,13 +50,27 @@ const App: React.FC = () => {
     }
   };
 
-  // Calcular el preu
+  
+  // preu
   const selectedTargeta = dataTargeta.find(
     (targeta) => targeta.id === selectedTargetaId
   );
-  const price = selectedTargeta ? selectedTargeta.price : 0;
+  const price:number = selectedTargeta ? selectedTargeta.price : 0;
 
-  // Renderitzar les targetes
+  //càlcul del preu, repetit, veure què fem
+  const preuFinal:number = (countPags + countLanguages) * 30 + price;
+
+  //mostrar targeta dels pressupostos
+  const addPressupost = (newPressupost: Pressupost) => {
+    setDataPressupost([...dataPressupost, newPressupost]);
+    //netejar al fer click
+    setCountPags(0);
+    setCountLanguages(0);
+    setSelectedTargetaId(null);
+  }
+
+
+  // map les targetes
   const printTargetes = dataTargeta.map((targeta: Targeta) => {
     return (
       <Targetes
@@ -65,22 +86,28 @@ const App: React.FC = () => {
     );
   });
 
-  // Funció per tornar a la pàgina de benvinguda
+  //map dels pressupostos
+  const printBudget = dataPressupost.map((pressupost: Pressupost) => {
+    return (
+      <ShowPressupost key={pressupost.id} pressupost={pressupost}/>
+    );
+  });
+
+  // tornar a la pàgina de benvinguda (true)
   const handleShowSplash = () => {
     setShowSplash(true);
   };
 
-  // Funció per mostrar el contingut principal
+  // pagina principal (false)
   const handleShowContent = () => {
     setShowSplash(false);
   };
 
-  // Si showSplash és true, mostrem la pàgina de benvinguda
+  // if showSplash == true: pg benvinguda
   if (showSplash) {
     return <SplashMessage onClick={handleShowContent} />;
   }
 
-  // Altrament, mostrem el contingut principal
   return (
     <>
       <Navbar onResetSplash={handleShowSplash} />
@@ -96,6 +123,12 @@ const App: React.FC = () => {
                 countLanguages={countLanguages}
                 price={price}
               />
+              <TargetaPressupost 
+                preuFinal={preuFinal} 
+                services={selectedTargeta?.service}
+                addPressupost={addPressupost}
+              />
+              {printBudget}
             </div>
           }
         />
