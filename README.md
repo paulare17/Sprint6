@@ -3,6 +3,8 @@
 Aplicació desenvolupada amb **React**, **TypeScript**, **Vite** i **CSS**.
 Simulació de pàgina web per oferir serveis de programació. L'usuari pot seleccionar els serveis i afegir llenguatges i pàgines. 
 
+**Només finalitzat fins al primer nivell**
+
 ## 🚀 Instal·lació i execució
 
 Segueix aquests passos per clonar i fer córrer el projecte en local:
