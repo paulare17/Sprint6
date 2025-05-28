@@ -4,7 +4,7 @@ import Preu from "./Preu";
 
 interface Props {
   preuFinal: number;
-  services?: string;
+  services: string;
   addPressupost: (pressupost: Pressupost) => void;
 }
 
@@ -19,9 +19,9 @@ const TargetaPressupost: React.FC<Props> = ({ preuFinal, services, addPressupost
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault(); //evita reiniciar la pàgina
     const newPressupost: Pressupost = {
-      id: Date.now(), // Usar timestamp como ID único
+      id: Date.now(),
       totalPrice: preuFinal,
-      service: services || "Cap servei seleccionat", //canviuar
+      service: services.join(", ") || "Cap servei seleccionat",
       name: formData.name,
       email: formData.email,
       numPhone: formData.numPhone,

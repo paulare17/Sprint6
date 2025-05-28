@@ -37,28 +37,23 @@ const App: React.FC = () => {
   const [dataPressupost, setDataPressupost] = useState<Pressupost[]>([])
 
   //quina targeta està seleccionada
-  const [selectedTargetaId, setSelectedTargetaId] = useState<number | null>(null);
+  const [selectedTargetaIds, setSelectedTargetaIds] = useState<number[]>([]);
   const handleSelectTargeta = (id: number, isSelected: boolean) => {
     if (isSelected) {
-      setSelectedTargetaId(id);
-      setCountLanguages(0);
-      setCountPags(0);
-    } else if (selectedTargetaId === id) {
-      setSelectedTargetaId(null);
-      setCountLanguages(0);
-      setCountPags(0);
+      setSelectedTargetaIds(prev => [...prev, id]);
+    } else {
+      setSelectedTargetaIds(prev => prev.filter(targetaId => targetaId !== id));
     }
   };
 
-  
   // preu
-  const selectedTargeta = dataTargeta.find(
-    (targeta) => targeta.id === selectedTargetaId
+  const selectedTargetas = dataTargeta.filter(
+    (targeta) => selectedTargetaIds.includes(targeta.id)
   );
-  const price:number = selectedTargeta ? selectedTargeta.price : 0;
+  const price = selectedTargetas.reduce((total, targeta) => total + targeta.price, 0);
 
   //càlcul del preu, repetit, veure què fem
-  const preuFinal:number = (countPags + countLanguages) * 30 + price;
+  const preuFinal: number = (countPags + countLanguages) * 30 + price;
 
   //mostrar targeta dels pressupostos
   const addPressupost = (newPressupost: Pressupost) => {
@@ -66,9 +61,8 @@ const App: React.FC = () => {
     //netejar al fer click
     setCountPags(0);
     setCountLanguages(0);
-    setSelectedTargetaId(null);
+    setSelectedTargetaIds([]);
   }
-
 
   // map les targetes
   const printTargetes = dataTargeta.map((targeta: Targeta) => {
@@ -80,7 +74,7 @@ const App: React.FC = () => {
         setCountPags={setCountPags}
         countLanguages={countLanguages}
         setCountLanguages={setCountLanguages}
-        isChecked={selectedTargetaId === targeta.id}
+        isChecked={selectedTargetaIds.includes(targeta.id)}
         onSelectTargeta={handleSelectTargeta}
       />
     );
@@ -125,7 +119,7 @@ const App: React.FC = () => {
               />
               <TargetaPressupost 
                 preuFinal={preuFinal} 
-                services={selectedTargeta?.service}
+                services={selectedTargetas.map(targeta => targeta.service)}
                 addPressupost={addPressupost}
               />
               {printBudget}

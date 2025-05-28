@@ -55,7 +55,7 @@ const Targetes: React.FC<Props> = ({
               />
               <label className="form-check-label">Afegeix</label>
               {/* desplegable al seleccionar: */}
-              {isChecked && (
+              {isChecked && id === 3 && (
                 <div className="additional-options">
                   <div className="option">
                     <label>Nombre de pàgines</label>
