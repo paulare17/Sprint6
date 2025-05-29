@@ -10,6 +10,8 @@ import logo from "./assets/logo.webp";
 import TargetaPressupost from "./components/TargetaPressupost";
 import dataPressupost, { Pressupost } from "./data-pressupost";
 import ShowPressupost from "./components/ShowPressupost";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 // pàgina de benvinguda
 const SplashMessage: React.FC<{ onClick: () => void }> = ({ onClick }) => {

@@ -97,6 +97,80 @@ nav {
   display: block;
 }
 
+/* desplegable */
+.web-options {
+  background: white;
+  border-radius: 40px;
+  padding: 2rem;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  display: none;
+}
+
+.web-options.visible {
+  display: block;
+}
+
+.web-options .option {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.web-options .option svg {
+  flex-shrink: 0; /*manté la mateixa mida de l'icono*/
+}
+
+.web-options .option label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  flex: 1;
+}
+
+.web-options .counter {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  min-width: 180px;
+}
+
+.web-options .counter button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  color: #333;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.web-options .counter button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.web-options .counter button:not(:disabled):hover {
+  background-color: #f8f9fa;
+  border-color: #ddd;
+}
+
+.web-options .counter input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
 .targeta-preu {
   flex: 1;
   display: flex;
@@ -206,6 +280,7 @@ nav {
   padding: 1rem;
   font-size: 1.25rem;
   color: #333;
+  font-weight: bold;
 }
 
 /* pagina benvinguda */
@@ -301,9 +376,9 @@ nav {
   color: #333;
 }
 
-.targeta-info p {
+/* .targeta-info p {
   display: none; /* Ocultamos el precio total ya que no aparece en el diseño de referencia */
-}
+
 
 /* Tarjetas de presupuestos */
 .pressupost-card {
@@ -389,3 +464,12 @@ nav {
   font-weight: bolder;
 }
 
+.modal {
+  font-family: "Poppins", sans-serif;
+  justify-content: center;
+  text-align: center;
+}
+
+.modal-title {
+  font-weight: bold;
+}
