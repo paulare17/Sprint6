@@ -473,3 +473,62 @@ nav {
 .modal-title {
   font-weight: bold;
 }
+
+/* Cercador */
+.cercador {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  align-items: center;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+}
+
+.search-box input {
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: #333;
+  width: 200px;
+}
+
+.search-box input::placeholder {
+  color: #999;
+}
+
+.cercador i {
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  color: #666;
+}
+
+.cercador i:hover {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+#toggler {
+  display: flex;
+  justify-content: center;
+}
+
+.form-check-label {
+  margin: 2rem;
+  font-size: 1.2rem;
+}
+
+
+#switchCheckChecked {
+  margin: 1rem;
+  
+}

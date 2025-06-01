@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Targeta } from "../data-targetes"; //interficie
+import { Targeta } from "../dataTargetes"; //interficie
 
 //extensió de la interfície de targeta
 interface Props extends Targeta {
@@ -9,6 +9,7 @@ interface Props extends Targeta {
   setCountLanguages: (num: number) => void;
   isChecked: boolean;
   onSelectTargeta: (id: number, isSelected: boolean) => void;
+  isAnnualPayment: boolean;
 }
 
 const Targetes: React.FC<Props> = ({
@@ -22,9 +23,10 @@ const Targetes: React.FC<Props> = ({
   setCountPags,
   isChecked,
   onSelectTargeta,
+  isAnnualPayment
 }) => {
   const [modalType, setModalType] = useState<"pages" | "languages" | null>(null);
-
+ 
   const selectedCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
     onSelectTargeta(id, e.target.checked);
   };
@@ -56,6 +58,8 @@ const Targetes: React.FC<Props> = ({
 
   const { title, content } = getModalContent();
 
+  const displayPrice = isAnnualPayment ? price * 0.8 : price;
+
   return (
     <section>
       <div className="targeta-container">
@@ -65,7 +69,7 @@ const Targetes: React.FC<Props> = ({
             <div className="description">{description}</div>
           </div>
           <div className="targeta-preu">
-            <h4>{price} €</h4>
+            <h4>{displayPrice} €</h4>
             <div className="form-check">
               <input
                 className="form-check-input"
@@ -83,7 +87,7 @@ const Targetes: React.FC<Props> = ({
       {id === 3 && (
         <div className="targeta-container">
           <div className={`web-options ${isChecked ? "visible" : ""}`}>
-            <div className="option">
+                  <div className="option">
               {/* icona ajuda */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -100,8 +104,8 @@ const Targetes: React.FC<Props> = ({
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
               </svg>
-              <label>Nombre de pàgines</label>
-              <div className="counter">
+                    <label>Nombre de pàgines</label>
+                    <div className="counter">
                 <button onClick={subtractPags} disabled={!isChecked}>
                   -
                 </button>
@@ -109,9 +113,9 @@ const Targetes: React.FC<Props> = ({
                 <button onClick={addPags} disabled={!isChecked}>
                   +
                 </button>
-              </div>
-            </div>
-            <div className="option">
+                    </div>
+                  </div>
+                  <div className="option">
               {/* icona ajuda */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -128,8 +132,8 @@ const Targetes: React.FC<Props> = ({
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
               </svg>
-              <label>Nombre d'idiomes</label>
-              <div className="counter">
+                    <label>Nombre d'idiomes</label>
+                    <div className="counter">
                 <button onClick={subtractLanguages} disabled={!isChecked}>
                   -
                 </button>
@@ -138,10 +142,10 @@ const Targetes: React.FC<Props> = ({
                   +
                 </button>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
+                    </div>
+                  </div>
+                </div>
+              )}
       {/* Modal de bootstrap (info) */}
       <div className="modal fade" id="infoModal" tabIndex={-1} aria-labelledby="infoModalLabel" aria-hidden="true">
         <div className="modal-dialog">

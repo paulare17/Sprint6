@@ -1,14 +1,25 @@
 import React, { useState, FormEvent } from "react";
-import dataPressupost, { Pressupost } from "data-pressupost";
-import Preu from "./Preu";
+import { Pressupost } from "data-pressupost";
 
 interface Props {
   preuFinal: number;
-  services: string;
+  services: string[];
   addPressupost: (pressupost: Pressupost) => void;
+  onSort: (field: 'date' | 'name' | 'price') => void;
+  sortOrder: 'asc' | 'desc';
+  sortField: 'date' | 'name' | 'price';
+  onSearch: (searchTerm: string) => void;
 }
 
-const TargetaPressupost: React.FC<Props> = ({ preuFinal, services, addPressupost }) => {
+const TargetaPressupost: React.FC<Props> = ({ 
+  preuFinal, 
+  services, 
+  addPressupost,
+  onSort,
+  sortOrder,
+  sortField,
+  onSearch
+}) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -35,12 +46,49 @@ const TargetaPressupost: React.FC<Props> = ({ preuFinal, services, addPressupost
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onSearch(e.target.value);
+  };
+
   return (
     <section>
       <div className="targeta-container">
         <div className="targeta">
           <div className="targeta-info">
+            <div className="container d-flex justify-content-between align-items-center">
             <h5>Demanar pressupost</h5>
+              <div className="cercador">
+                <div className="search-box">
+                  <i className="bi bi-search"></i>
+                  <input 
+                    type="text" 
+                    placeholder="Cercar pressupost..." 
+                    onChange={handleSearch}
+                  />
+                </div>
+                <i 
+                  role="button" 
+                  className={`bi ${sortField === 'date' && sortOrder === 'desc' ? 'bi-sort-down' : 'bi-sort-up'}`}
+                  onClick={() => onSort('date')}
+                >
+                  Data
+                </i>
+                <i 
+                  role="button" 
+                  className={`bi ${sortField === 'name' && sortOrder === 'desc' ? 'bi-sort-down' : 'bi-sort-up'}`}
+                  onClick={() => onSort('name')}
+                >
+                  Nom
+                </i>
+                <i 
+                  role="button" 
+                  className={`bi ${sortField === 'price' && sortOrder === 'desc' ? 'bi-sort-down' : 'bi-sort-up'}`}
+                  onClick={() => onSort('price')}
+                >
+                  Import
+                </i>
+              </div>
+            </div>
             <p>Preu total: {preuFinal}€</p>
             <form onSubmit={handleSubmit}>
               <input
