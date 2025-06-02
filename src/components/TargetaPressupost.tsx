@@ -3,7 +3,7 @@ import { Pressupost } from "dataPressupost";
 
 interface Props {
   preuFinal: number;
-  services: string[];
+  services: string;
   addPressupost: (pressupost: Pressupost) => void;
   onSort: (field: 'date' | 'name' | 'price') => void;
   sortOrder: 'asc' | 'desc';
@@ -32,7 +32,7 @@ const TargetaPressupost: React.FC<Props> = ({
     const newPressupost: Pressupost = {
       id: Date.now(),
       totalPrice: preuFinal,
-      service: services.join(", ") || "Cap servei seleccionat",
+      service: services,
       name: formData.name,
       email: formData.email,
       numPhone: formData.numPhone,
@@ -41,6 +41,7 @@ const TargetaPressupost: React.FC<Props> = ({
     setFormData({ name: "", email: "", numPhone: "" });
   };
 
+  //canvis del dom quan s'activen les cerques 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));

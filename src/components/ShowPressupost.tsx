@@ -5,6 +5,7 @@ interface Props {
   pressupost: Pressupost;
 }
 
+//mostra en pantalla la targeta dels pressupostos
 const ShowPressupost: React.FC<Props> = ({ pressupost }) => {
   return (
     <section className="pressupost-card">

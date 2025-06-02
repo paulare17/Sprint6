@@ -12,7 +12,7 @@ import ShowPressupost from "./components/ShowPressupost";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import TogglerOferta from "./components/TogglerOferta";
 import { Pressupost } from "./dataPressupost";
-import { calculaPreuFinal } from "../utils/preuFinal";
+import { calculaPreuFinal } from "./utils/preufinal";
 
 
 // pàgina de benvinguda
@@ -49,13 +49,11 @@ const App: React.FC = () => {
   const selectedTargetas = dataTargeta.filter(
     (targeta) => selectedTargetes[targeta.id]
   );
+
+
+  //passar a app el preu final i sumar les diferents targetes si les hi ha 
   const price = selectedTargetas.reduce((total, targeta) => total + targeta.price, 0);
-
-
-
-  const preuFinal: number = isAnnualPayment 
-    ? ((countPags + countLanguages) * 30 + price) * 0.8 
-    : (countPags + countLanguages) * 30 + price;
+ const preuFinal = calculaPreuFinal(countPags, countLanguages, price, isAnnualPayment);
 
     //afegeix pressupostos
   const addPressupost = (newPressupost: Pressupost) => {
@@ -82,9 +80,7 @@ const App: React.FC = () => {
     setSearchTerm(term.toLowerCase());
   };
 
-  //anual o mensual
-
-
+//ordena
   const filteredAndSortedPressupostos = [...dataPressupostState]
     .filter(pressupost => 
       pressupost.name.toLowerCase().includes(searchTerm) ||
@@ -103,7 +99,6 @@ const App: React.FC = () => {
       return sortOrder === 'asc' ? comparison : -comparison;
     });
 
-    //filter targetes
   const selectedServices = () => {
     return dataTargeta
       .filter((targeta) => selectedTargetes[targeta.id])
@@ -128,10 +123,13 @@ const App: React.FC = () => {
     );
   });
 
+
+  //toggler de mensual / anual
   const handlePaymentToggle = (isAnnual: boolean) => {
 setIsAnnualPayment(isAnnual);
 };
 
+//mostra/oculta pantalla benvinguda
   const handleShowSplash = () => {
     setShowSplash(true);
   };
