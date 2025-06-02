@@ -8,7 +8,6 @@ import Preu from "./components/Preu";
 import dataTargeta, { Targeta } from "./dataTargetes";
 import logo from "./assets/logo.webp";
 import TargetaPressupost from "./components/TargetaPressupost";
-import dataPressupost, { Pressupost } from "./dataPressupost";
 import ShowPressupost from "./components/ShowPressupost";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import TogglerOferta from "./components/TogglerOferta";
@@ -27,7 +26,7 @@ const SplashMessage: React.FC<{ onClick: () => void }> = ({ onClick }) => {
 };
 
 const App: React.FC = () => {
-  // Todos los estados al principio del componente
+  // estats
   const [showSplash, setShowSplash] = useState(true);
   const [countPags, setCountPags] = useState(0);
   const [countLanguages, setCountLanguages] = useState(0);
@@ -38,6 +37,8 @@ const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isAnnualPayment, setIsAnnualPayment] = useState(false);
 
+
+  //targeta seleccionada 
   const handleSelectTargeta = (id: number, isSelected: boolean) => {
     setSelectedTargetes((prev) => ({ ...prev, [id]: isSelected }));
   };
@@ -51,6 +52,7 @@ const App: React.FC = () => {
     ? ((countPags + countLanguages) * 30 + price) * 0.8 
     : (countPags + countLanguages) * 30 + price;
 
+    //afegeix pressupostos
   const addPressupost = (newPressupost: Pressupost) => {
     setDataPressupostState([...dataPressupostState, newPressupost]);
     setCountPags(0);
@@ -59,6 +61,7 @@ const App: React.FC = () => {
     setIsAnnualPayment(false);
   }
 
+  //ordena
   const handleSort = (field: 'date' | 'name' | 'price') => {
     if (field === sortField) {
       setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -68,10 +71,13 @@ const App: React.FC = () => {
     }
   };
 
+  //busca
   const handleSearch = (term: string) => {
+    //posar per sistema en minuscula per evitar conflictes
     setSearchTerm(term.toLowerCase());
   };
 
+  //anual o mensual
   const handlePaymentToggle = (isAnnual: boolean) => {
     setIsAnnualPayment(isAnnual);
   };
@@ -94,12 +100,15 @@ const App: React.FC = () => {
       return sortOrder === 'asc' ? comparison : -comparison;
     });
 
+    //filter targetes
   const selectedServices = () => {
     return dataTargeta
       .filter((targeta) => selectedTargetes[targeta.id])
       .map((targeta) => targeta.service);
   };
 
+
+  //pinta cada targeta segons l'array de dataTargeta
   const printTargetes = dataTargeta.map((targeta: Targeta) => {
     return (
       <Targetes
