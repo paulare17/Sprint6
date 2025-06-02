@@ -11,6 +11,9 @@ import TargetaPressupost from "./components/TargetaPressupost";
 import ShowPressupost from "./components/ShowPressupost";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import TogglerOferta from "./components/TogglerOferta";
+import { Pressupost } from "./dataPressupost";
+import { calculaPreuFinal } from "../utils/preuFinal";
+
 
 // pàgina de benvinguda
 const SplashMessage: React.FC<{ onClick: () => void }> = ({ onClick }) => {
@@ -48,6 +51,8 @@ const App: React.FC = () => {
   );
   const price = selectedTargetas.reduce((total, targeta) => total + targeta.price, 0);
 
+
+
   const preuFinal: number = isAnnualPayment 
     ? ((countPags + countLanguages) * 30 + price) * 0.8 
     : (countPags + countLanguages) * 30 + price;
@@ -78,9 +83,7 @@ const App: React.FC = () => {
   };
 
   //anual o mensual
-  const handlePaymentToggle = (isAnnual: boolean) => {
-    setIsAnnualPayment(isAnnual);
-  };
+
 
   const filteredAndSortedPressupostos = [...dataPressupostState]
     .filter(pressupost => 
@@ -125,6 +128,10 @@ const App: React.FC = () => {
     );
   });
 
+  const handlePaymentToggle = (isAnnual: boolean) => {
+setIsAnnualPayment(isAnnual);
+};
+
   const handleShowSplash = () => {
     setShowSplash(true);
   };
@@ -152,6 +159,7 @@ const App: React.FC = () => {
                 countPags={countPags}
                 countLanguages={countLanguages}
                 price={price}
+                isAnnualPayment={isAnnualPayment}
               />
               <TargetaPressupost 
                 preuFinal={preuFinal} 

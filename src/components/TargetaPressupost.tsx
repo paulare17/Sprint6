@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from "react";
-import { Pressupost } from "data-pressupost";
+import { Pressupost } from "dataPressupost";
 
 interface Props {
   preuFinal: number;

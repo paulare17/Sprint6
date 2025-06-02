@@ -47,12 +47,12 @@ const Targetes: React.FC<Props> = ({
     if (modalType === "pages") {
       return {
         title: "Nombre de pàgines",
-        content: "Afegeix les pàgines que necessites per dur a terme el teu projecte. El cost de cada pàgina és de 30€"
+        content: "Afegeix les pàgines que necessites per dur a terme el teu projecte. El cost de cada pàgina és de 30€ (s'aplica descompte del 20%)"
       };
     }
     return {
       title: "Nombre d'idiomes",
-      content: "Afegeix els llenguatges que tindrà el teu projecte. El cost de cada llenguatge és de 30€"
+      content: "Afegeix els llenguatges que tindrà el teu projecte. El cost de cada llenguatge és de 30€ (s'aplica descompte del 20%)"
     };
   };
 
