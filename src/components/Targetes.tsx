@@ -58,6 +58,7 @@ const Targetes: React.FC<Props> = ({
 
   const { title, content } = getModalContent();
 
+  //càlcul del 20% de descompte
   const displayPrice = isAnnualPayment ? price * 0.8 : price;
 
   return (
@@ -147,7 +148,7 @@ const Targetes: React.FC<Props> = ({
                 </div>
               )}
       {/* Modal de bootstrap (info) */}
-      <div className="modal fade" id="infoModal" tabIndex={-1} aria-labelledby="infoModalLabel" aria-hidden="true">
+      <div className="modal fade" id="infoModal" tabIndex={-1}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
