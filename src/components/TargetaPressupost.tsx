@@ -1,6 +1,7 @@
 import React, { useState, FormEvent } from "react";
 import { Pressupost } from "dataPressupost";
 
+
 interface Props {
   preuFinal: number;
   services: string;
@@ -26,11 +27,26 @@ const TargetaPressupost: React.FC<Props> = ({
     numPhone: "",
   });
 
-  //enviament del form
+//enviament del form
+  
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault(); //evita reiniciar la pàgina
+
+      //validació mail i telf
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneRegex = /^\d{9,}$/;
+if (!emailRegex.test(formData.email)){
+  alert("El correu electrònic no està ben introduït")
+return;
+}
+if (!phoneRegex.test(formData.numPhone)) {
+  alert("El número de telèfon no té el format correcte")
+ return;
+} 
+
     const newPressupost: Pressupost = {
-      id: Date.now(),
+      id: pressupost.id,
       totalPrice: preuFinal,
       service: services,
       name: formData.name,
@@ -107,7 +123,8 @@ const TargetaPressupost: React.FC<Props> = ({
                 onChange={handleInputChange}
                 required
                 placeholder="Escrigui el seu número"
-              />
+                />
+    
               <input
                 type="email"
                 name="email"
@@ -116,6 +133,7 @@ const TargetaPressupost: React.FC<Props> = ({
                 required
                 placeholder="Escrigui el seu mail"
               />
+            
               <button type="submit" className="budget">Sol·licitar pressupost</button>
             </form>
           </div>

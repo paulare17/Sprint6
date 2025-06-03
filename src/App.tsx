@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar";
-import Portada from "./components/Portada";
-import Targetes from "./components/Targetes";
-import Preu from "./components/Preu";
+import Navbar from "@components/Navbar";
+import Portada from "@components/Portada";
+import Targetes from "@components/Targetes";
+import Preu from "@components/Preu";
 import dataTargeta, { Targeta } from "./dataTargetes";
-import logo from "./assets/logo.webp";
-import TargetaPressupost from "./components/TargetaPressupost";
-import ShowPressupost from "./components/ShowPressupost";
+import logo from "@assets/logo.webp";
+import TargetaPressupost from "@components/TargetaPressupost";
+import ShowPressupost from "@components/ShowPressupost";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import TogglerOferta from "./components/TogglerOferta";
-import { Pressupost } from "./dataPressupost";
-import { calculaPreuFinal } from "./utils/preufinal";
+import TogglerOferta from "@components/TogglerOferta";
+import { Pressupost } from "dataPressupost";
+import { calculaPreuFinal } from "@utils/preufinal";
 
 
 // pàgina de benvinguda
@@ -44,10 +44,16 @@ const App: React.FC = () => {
   //targeta seleccionada 
   const handleSelectTargeta = (id: number, isSelected: boolean) => {
     setSelectedTargetes((prev) => ({ ...prev, [id]: isSelected }));
+    //si es deselecciona la id3, s'estableix a 0 counts
+    if (id === 3 && !isSelected) {
+      setCountPags(0)
+      setCountLanguages(0)
+    }
   };
 
   const selectedTargetas = dataTargeta.filter(
     (targeta) => selectedTargetes[targeta.id]
+
   );
 
 
@@ -85,7 +91,7 @@ const App: React.FC = () => {
     .filter(pressupost => 
       pressupost.name.toLowerCase().includes(searchTerm) ||
       pressupost.email.toLowerCase().includes(searchTerm) ||
-      pressupost.service.toLowerCase().includes(searchTerm)
+      pressupost.service.join(", ").toLowerCase().includes(searchTerm)
     )
     .sort((a, b) => {
       let comparison = 0;

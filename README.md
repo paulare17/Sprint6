@@ -3,7 +3,6 @@
 Aplicació desenvolupada amb **React**, **TypeScript**, **Vite** i **CSS**.
 Simulació de pàgina web per oferir serveis de programació. L'usuari pot seleccionar els serveis i afegir llenguatges i pàgines. 
 
-**Només finalitzat fins al primer nivell**
 
 ## 🚀 Instal·lació i execució
 
@@ -11,8 +10,8 @@ Segueix aquests passos per clonar i fer córrer el projecte en local:
 
 ### 1. Clonar el repositori
 
-`git clone https://github.com/usuari/nom-del-projecte.git
-cd nom-del-projecte`
+`git clone https://github.com/usuari/Sprint6.git
+cd Sprint6`
 
 ### 2. Instal·lar les dependències (no sempre és necessari)
 

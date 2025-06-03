@@ -146,7 +146,7 @@ const Targetes: React.FC<Props> = ({
                     </div>
                   </div>
                 </div>
-              )}
+              ) }
       {/* Modal de bootstrap (info) */}
       <div className="modal fade" id="infoModal" tabIndex={-1}>
         <div className="modal-dialog">

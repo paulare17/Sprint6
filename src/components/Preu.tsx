@@ -1,5 +1,5 @@
 import React from "react";
-import { calculaPreuFinal } from "../utils/preufinal";
+import { calculaPreuFinal } from "@utils/preufinal";
 
 interface Props {
   countPags: number;
