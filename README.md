@@ -1,11 +1,21 @@
 # 🌐 Sprint 6
 
 Aplicació desenvolupada amb **React**, **TypeScript**, **Vite** i **CSS**.
-Simulació de pàgina web per oferir serveis de programació. L'usuari pot seleccionar els serveis i afegir llenguatges i pàgines. 
+Simulació de pàgina web per oferir serveis de programació. L'usuari pot seleccionar els serveis i afegir llenguatges i pàgines. Els pressupostos es registren i poden ser filtrats per data, import i nom.
+
+
+## Captures de pantalla
+
+Pàgina de benvinguda:
 ![image](https://github.com/user-attachments/assets/63a55bae-b190-4846-b6a6-6424e910c604)
 
+Opcions de serveis (apliable):
 ![Captura de pantalla 2025-06-03 101314](https://github.com/user-attachments/assets/d2f1035e-32d0-4ecb-99c5-ecd80fcd6ee1)
+
+Desplegable per afegir pàgines i llenguatges:
 ![Captura de pantalla 2025-06-03 101331](https://github.com/user-attachments/assets/e22a3399-86f8-417f-8c09-b19a5e969efd)
+
+Cercador de pressupostos:
 ![Captura de pantalla 2025-06-03 101433](https://github.com/user-attachments/assets/dd397459-a39b-4143-955c-1cc8b37c2161)
 
 
